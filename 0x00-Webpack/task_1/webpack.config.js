@@ -1,10 +1,24 @@
 const path = require('path');
 
 module.exports = {
-    entry: '../js/dashboard_main.js',
+    mode: 'production', // Set mode to production
+    entry: './js/dashboard_main.js', // Entry point for compilation
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'public'),
+        filename: 'bundle.js', // Output filename
+        path: path.resolve(__dirname, 'public'), // Output directory
     },
-    mode: 'production',
+    module: {
+        rules: [
+            {
+                test: /\.js$/, // Target JavaScript files
+                exclude: /node_modules/, // Exclude node_modules
+                use: {
+                    loader: 'babel-loader', // Use Babel loader
+                    options: {
+                        presets: ['@babel/preset-env'] // Use the env preset
+                    }
+                }
+            }
+        ]
+    }
 };
