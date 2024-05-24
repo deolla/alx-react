@@ -14,7 +14,7 @@ let count = 0;
 //Define updateCounter function
 function updateCounter() {
     count++;
-    $('#count').html(`${count} clicks on the button`);
+    $('#count').text(`${count} clicks on the button`);
 }
 
 // Bind updateCounter function to button click event with de
