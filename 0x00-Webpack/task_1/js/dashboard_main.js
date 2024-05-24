@@ -17,5 +17,5 @@ const updateCounter = () => {
     });
 }
 
-const debouncedUpdateCounter = _.debounce(updateCounter, 500); // Debounce by 500ms
+const debouncedUpdateCounter = _.debounce(updateCounter);
 $(document).ready(debouncedUpdateCounter);
