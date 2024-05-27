@@ -1,49 +1,46 @@
 const path = require('path');
 
 module.exports = {
-  entry: './js/dashboard_main.js',
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
-  },
-  mode: 'production',
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-        use: [
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                progressive: true,
-                quality: 65
-              },
-              optipng: {
-                enabled: true,
-              },
-              pngquant: {
-                quality: [0.65, 0.90],
-                speed: 4
-              },
-              gifsicle: {
-                interlaced: false,
-              },
-              webp: {
-                quality: 75
-              }
+    mode: 'production', // Set mode to production
+    entry: './src/index.js', // Entry point for compilation
+    output: {
+        filename: 'bundle.js', // Output filename
+        path: path.resolve(__dirname, 'public'), // Output directory
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/, // Target JavaScript files
+                exclude: /node_modules/, // Exclude node_modules
+                use: {
+                    loader: 'babel-loader', // Use Babel loader
+                    options: {
+                        presets: ['@babel/preset-env'] // Use the env preset
+                    }
+                }
+            },
+            {
+                test: /\.css$/, // Target CSS files
+                use: ['style-loader', 'css-loader'] // Use style-loader and css-loader
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/, // Target image files
+                use: [
+                    {
+                        loader: 'file-loader', // Use file-loader
+                        options: {
+                            name: '[name].[ext]', // Keep original file name and extension
+                            outputPath: 'images/', // Output directory for images
+                            esModule: false
+                        }
+                    }
+                ]
             }
-          },
-        ],
-      }
-    ],
-  },
-  performance: {
-    maxAssetSize: 2000000,
-  },
+        ]
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+        },
+    },
 };
