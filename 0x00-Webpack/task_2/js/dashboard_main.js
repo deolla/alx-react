@@ -3,7 +3,6 @@ import _ from 'lodash';
 import '../css/main.css';
 
 // Append elements to the body.
-$('body').prepend("<div id='logo'></div>");
 $('body').append("<p>Holberton Dashboard</p>");
 $('body').append("<p>Dashboard data for the students</p>");
 $('body').append("<button>Click here to get started</button>");
