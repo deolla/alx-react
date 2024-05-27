@@ -19,4 +19,4 @@ function updateCounter() {
 }
 
 // Bind updateCounter function to button click event with de
-$('button').on('click', _.debounce(updateCounter, 500, { leading: true, trailing: false }));
+$('button').on('click', _.debounce(updateCounter, 500));
