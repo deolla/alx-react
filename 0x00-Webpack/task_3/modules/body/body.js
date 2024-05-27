@@ -1,19 +1,17 @@
+import './body.css';
 import $ from 'jquery';
 import _ from 'lodash';
-import './body.css';
 
-$('body').append("<button>Click here to get started</button>");
-$('body').append("<p id='count'></p>");
+$('body').append('<button>Click here to get started</button>');
+$('body').append('<p id="count"><p>');
 
-// Initialize click counter.
-let count = 0;
+const updateCounter = () => {
+	let times = $('#count').html() || 0;
+	$('button').on('click', () => {
+		times++;
+		$('#count').html(`${times} clicks on the button`);
+	});
+};
 
-//Define updateCounter function
-function updateCounter() {
-    count++;
-    $('#count').text(`${count} clicks on the button`);
-}
-
-// Bind updateCounter function to button click event with de
-$('button').on('click', _.debounce(updateCounter, 500));
-
+_.debounce(updateCounter, 500);
+updateCounter();
