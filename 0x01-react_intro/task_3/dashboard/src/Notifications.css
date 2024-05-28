@@ -1,0 +1,17 @@
+/* Notifications.css */
+
+.Notifications {
+  padding: 0.3em;
+  border: 2px dashed #e0354b;
+  position: absolute;
+  top: 10px;
+  width: 95vw; /* Adjust the width as needed */
+}
+
+.Notifications ul li[data="default"] {
+  color: rgb(34, 2, 150);
+}
+
+.Notifications ul li[data="urgent"] {
+  color: red;
+}
