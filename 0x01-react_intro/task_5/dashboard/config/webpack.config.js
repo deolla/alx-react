@@ -34,6 +34,11 @@ module.exports = {
               bypassOnDebug: true,
             },
           },
+          {
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            use: ['babel-loader'],
+          }
         ],
       },
     ],
