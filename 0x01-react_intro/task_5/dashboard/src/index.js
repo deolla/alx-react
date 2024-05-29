@@ -1,9 +1,19 @@
-import './style.css';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import Notifications from './Notifications';
 
-function component() {
-  const element = document.createElement('div');
-  element.innerHTML = 'Hello, Webpack!';
-  return element;
-}
 
-document.getElementById('app').appendChild(component());
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+const root_notifications = ReactDOM.createRoot(document.getElementById('root-notifications'));
+root_notifications.render(
+  <React.StrictMode>
+     <Notifications />
+  </React.StrictMode>
+)
