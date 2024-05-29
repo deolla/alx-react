@@ -12,7 +12,10 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     static: './dist',
+    compress: true,
     hot: true,
+    open: true,
+    port: 8664,
   },
   module: {
     rules: [
@@ -22,12 +25,13 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        //type: 'asset/resource',
         use: [
           {
             loader: 'image-webpack-loader',
             options: {
               disable: true, // Set to true in development
+              bypassOnDebug: true,
             },
           },
         ],
@@ -36,6 +40,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      name: 'index.html',
+      inject: false,
       template: './dist/index.html',
     }),
   ],
